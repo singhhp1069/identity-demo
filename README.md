@@ -9,6 +9,8 @@ Folder structure must be the following:
 |_ether-fuel-service
 ```
 
+**Clone the repository in their respective folders**
+
 To run project in dev mode:
 ```bash
 $ cd docker_infrastructure
