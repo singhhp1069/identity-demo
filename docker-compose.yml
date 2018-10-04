@@ -1,67 +1,55 @@
 version: '2'
 
 services:
+
   identity-app:
-    build: ../identity-app
-    container_name: identity-app
-    ports:
-      - 8080:8001
-    environment:
-      - ETHEREUM_IP=http://172.25.0.102
-      - ETHEREUM_PORT=8545
-    volumes:
-      - ../identity-contracts:/identity-contracts
-    depends_on:
-      - identity-faucet
-      - ether-fuel-service
+   build: ../identity-app
+   container_name: identity-app
+   ports:
+     - 8080:8001
+   environment:
+     - ETHEREUM_ADDRESS=http://localhost:8545
+     - FAUCET_ADDRESS=http://localhost:4000
+   depends_on:
+     - identity-faucet
+     - testrpc_server
 
   identity-faucet:
-    build: ../identity-faucet
-    container_name: identity-faucet
-    ports:
-      - 4000:4000
-    environment:
-      - PORT = 4000
-      - ETHEREUM_IP=http://172.25.0.102
-      - ETHEREUM_PORT=8545
-    volumes:
-      - ../identity-contracts:/identity-contracts
-    depends_on:
-      - testrpc_server
-    links:
-      - testrpc_server
-  
+   build: ../identity-faucet
+   container_name: identity-faucet
+   ports:
+     - 4000:4000
+   environment:
+     - PORT=4000
+     - ETHEREUM_ADDRESS=http://testrpc_server:8545
+     - FUEL_SERVICE=http://ether-fuel-service:5000
+   depends_on:
+     - testrpc_server
+     - ether-fuel-service
+   links:
+     - testrpc_server:testrpc_server
+     - ether-fuel-service:ether-fuel-service
+
   ether-fuel-service:
-    build: ../ether-fuel-service
-    container_name: ether-fuel-service
-    ports:
-      - 5000:5000
-    environment:
-      - PORT = 5000
-      - ETHEREUM_IP=http://172.25.0.102
-      - ETHEREUM_PORT=8545
-      - SEED_PHRASE = "help maple me bake pudding cream honey rich smooth crumble sweet treat"
-      - GAS_LIMIT=25000
-      - GAS_PRICE=3e9
-      - AMOUNT=650000000000000000
-      - NO_OF_ADDRESSES=10
-    depends_on:
-      - testrpc_server
-    links:
-      - testrpc_server
+   build: ../ether-fuel-service
+   container_name: ether-fuel-service
+   ports:
+     - 5000:5000
+   environment:
+     - PORT=5000
+     - ETHEREUM_ADDRESS=http://testrpc_server:8545
+     - SEED_PHRASE=route harbor drastic pigeon asset circle vintage robust catalog vendor okay vault
+     - GAS_LIMIT=6721975
+     - GAS_PRICE=20000000000
+     - AMOUNT=650000000000000000
+     - NO_OF_ADDRESSES=10
+   depends_on:
+     - testrpc_server
+   links:
+     - testrpc_server:testrpc_server
 
   testrpc_server:
     build: ./testrpc
     container_name: testrpc_server
     ports:
       - 8545:8545
-    networks:
-      mynet:
-        ipv4_address: 172.25.0.102
-
-networks:
-  mynet:
-    driver: bridge
-    ipam:
-      config:
-      - subnet: 172.25.0.0/24

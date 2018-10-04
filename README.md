@@ -5,10 +5,8 @@ Simple development set up which allows to run all projects from the single entry
 Folder structure must be the following:
 ```
 |_identity-app
-|_identity-contracts
 |_identity-faucet
 |_ether-fuel-service
-|_ipfs-plugin
 ```
 
 To run project in dev mode:
@@ -21,7 +19,6 @@ identity app listen on :
 ```
 localhost:8080 or {docker_public_ip}:8080
 ```
-
 
 identity facuet Service listen on : 
 ```

@@ -9,4 +9,4 @@ RUN npm install -g --unsafe-perm ganache-cli && \
     npm set progress=false
 
 # start the testrpc
-CMD ["ganache-cli", "-m 'help maple me bake pudding cream honey rich smooth crumble sweet treat'"]
+CMD ganache-cli --hostname=0.0.0.0 -m 'route harbor drastic pigeon asset circle vintage robust catalog vendor okay vault'
