@@ -37,6 +37,11 @@ testrpc listen on :
 localhost:8545 or {docker_public_ip}:8545
 ```
 
+IPFS Web UI listen on : 
+```
+localhost:5002/webui or {docker_public_ip}:5002/webui
+```
+
 to get the docker network bridge IP
 ```
 docker inspect {container_name} | grep 'IPAddress'

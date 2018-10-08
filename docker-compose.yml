@@ -29,6 +29,7 @@ services:
    links:
      - testrpc_server:testrpc_server
      - ether-fuel-service:ether-fuel-service
+     - ipfs_server:ipfs_server
 
   ether-fuel-service:
    build: ../ether-fuel-service
@@ -53,3 +54,11 @@ services:
     container_name: testrpc_server
     ports:
       - 8545:8545
+  
+  ipfs_server:
+    build: ./ipfs
+    container_name: ipfs_server
+    ports:
+      - 4001:4001
+      - 5002:5002
+      - 8002:8002
