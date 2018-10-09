@@ -23,9 +23,12 @@ services:
      - PORT=4000
      - ETHEREUM_ADDRESS=http://testrpc_server:8545
      - FUEL_SERVICE=http://ether-fuel-service:5000
+     - IPFS_NODE_HOST=ipfs_server
+     - IPFS_NODE_PORT=5002
    depends_on:
      - testrpc_server
      - ether-fuel-service
+     - ipfs_server
    links:
      - testrpc_server:testrpc_server
      - ether-fuel-service:ether-fuel-service
