@@ -19,7 +19,7 @@ EXPOSE ${GATEWAY_PORT}
 # Install ipfs using ipfs-update
 RUN go get -u github.com/ipfs/ipfs-update \
     && ipfs-update install latest \
-    && ipfs init
+    && ipfs init 
 
 # config the api endpoint, may introduce security risk to expose API_PORT public
 RUN ipfs config Addresses.API /ip4/0.0.0.0/tcp/${API_PORT}
