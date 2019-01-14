@@ -39,7 +39,7 @@ localhost:8545 or {docker_public_ip}:8545
 
 IPFS Web UI listen on : 
 ```
-localhost:5002/webui or {docker_public_ip}:5002/webui
+localhost:5001/webui or {docker_public_ip}:5001/webui
 ```
 
 to get the docker network bridge IP
