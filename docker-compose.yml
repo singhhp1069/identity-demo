@@ -2,7 +2,7 @@ version: '2'
 
 services:
   identity-app:
-   image: dockerhub.fokus.fraunhofer.de:5000/blockchain/identity-app
+   image:
    container_name: identity-app
    ports:
      - 8080:8001
@@ -16,7 +16,7 @@ services:
      - secret_sharing_service
 
   identity-faucet:
-   image: dockerhub.fokus.fraunhofer.de:5000/blockchain/identity-faucet
+   image:
    container_name: identity-faucet
    ports:
      - 4000:4000
@@ -36,7 +36,7 @@ services:
      - ipfs_server:ipfs_server
 
   ether-fuel-service:
-   image: dockerhub.fokus.fraunhofer.de:5000/blockchain/ether-fuel-service
+   image:
    container_name: ether-fuel-service
    ports:
      - 6000:6000
@@ -54,13 +54,13 @@ services:
      - testrpc_server:testrpc_server
 
   testrpc_server:
-    image: dockerhub.fokus.fraunhofer.de:5000/blockchain/testrpc_network
+    image:
     container_name: testrpc_server
     ports:
       - 8545:8545
   
   ipfs_server:
-    image: dockerhub.fokus.fraunhofer.de:5000/blockchain/ipfs_network
+    image:
     container_name: ipfs_server
     ports:
       - 4001:4001
@@ -69,6 +69,6 @@ services:
       - 8081:8081
   
   secret_sharing_service:
-    image: dockerhub.fokus.fraunhofer.de:5000/secret_sharing/api_service
+    image:
     ports:
      - 5000:5000
