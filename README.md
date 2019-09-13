@@ -7,6 +7,9 @@ Folder structure must be the following:
 |_identity-app
 |_identity-faucet
 |_ether-fuel-service
+|_ipfs-network
+|_shamir-service
+|_testrpc-network
 ```
 
 **Clone the repository in their respective folders**
