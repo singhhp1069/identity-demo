@@ -22,7 +22,7 @@ $ sudo docker-compose up --build
 
 identity app listen on : 
 ```
-localhost:8080 or {docker_public_ip}:8080
+localhost:8000 or {docker_public_ip}:8000
 ```
 
 identity facuet Service listen on : 
